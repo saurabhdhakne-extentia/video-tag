@@ -7,11 +7,15 @@
 </head>
 <body>
 
-    <h1> Hello World</h1>
-    <video id="heroVideo" width="500px" muted >
+    <h1> Hello World, 1st video with playsinline="playsinline" </h1>
+    <video id="heroVideo" width="500px" muted playsinline="playsinline" >
         <source src="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4" id="videroSource" type="video/mp4" />
     </video>
-    
+
+    <h1>Second video without playsinline</h1>
+    <video id="heroVideo2" width="500px" muted >
+        <source src="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4" id="videroSource" type="video/mp4" />
+        </video>
     <script>
         
     const heroVideo = document.getElementById('heroVideo')
@@ -25,7 +29,19 @@
         }
     }
 
+    const heroVideo2 = document.getElementById('heroVideo2')
+    function restartHeroVideo() {
+        if (heroVideo2.paused) {
+            heroVideo2.currentTime = 0;
+            heroVideo2.play()
+        } else {
+            heroVideo2.pause()
+            restartHeroVideo()
+        }
+    }
+
     setTimeout(restartHeroVideo, 500)
+    setTimeout(restartHeroVideo2, 500)
 
     </script>
 </body>
