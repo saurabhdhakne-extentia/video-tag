@@ -3,13 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Video tag</title>
 </head>
 <body>
 
-  <video id="heroVideo" width="100%" loop autoplay muted>
-      <source src="./video.mp4" id="videroSource" type="video/mp4" />
-  </video>
-  
+    <video id="heroVideo" width="500px" muted playsinline="playsinline">
+        <source src="./video.mp4" id="videroSource" type="video/mp4" />
+    </video>
+    
+    <script>
+        
+    const heroVideo = document.getElementById('heroVideo')
+    function restartHeroVideo() {
+        if (heroVideo.paused) {
+            heroVideo.currentTime = 0;
+            heroVideo.play()
+        } else {
+            heroVideo.pause()
+            restartHeroVideo()
+        }
+    }
+
+    setTimeout(restartHeroVideo, 500)
+
+    </script>
 </body>
 </html>
