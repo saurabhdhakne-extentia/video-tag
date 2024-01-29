@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <h1> Hello World, 1st video with playsinline="playsinline" </h1>
+    <h1> Hello World, <span id="temp"></span></h1>
     <video id="heroVideo" width="500px" muted playsinline="playsinline" >
         <source src="https://sample-videos.com/video321/mp4/720/big_buck_bunny_720p_1mb.mp4" id="videroSource" type="video/mp4" />
     </video>
@@ -42,6 +42,19 @@
 
     setTimeout(restartHeroVideo, 500)
     setTimeout(restartHeroVideo2, 500)
+
+    let hht1 = true;
+    function startActionBasedOnTime(video) {
+        video.addEventListener('timeupdate', () => {
+            const currentTime = video.currentTime;
+            if (currentTime >= 2.5 && hht1) {
+                document.getElementById('temp').innerText = "I'm here" 
+            }
+
+        })
+    }
+    startActionBasedOnTime(heroVideo);
+
 
     </script>
 </body>
